@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leon Kaushik Deka | Security Architect</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg-deep: #030407;
+            --bg-surface: #0b0f19;
+            --bg-card: rgba(17, 25, 40, 0.6);
+            --bg-modal: #0a0d12;
+            
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --accent: #10b981;
+            
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.2);
+
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: auto; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-heading);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%), 
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
+        }
+
+        /* Mouse Spotlight */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.03), transparent 40%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 { line-height: 1.1; font-weight: 600; }
+        
+        .mono { font-family: var(--font-mono); }
+        .text-gradient {
+            background: linear-gradient(to right, var(--text-main), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 120px 0; position: relative; }
+
+        /* --- NAV --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 20px 0; transition: all 0.4s var(--ease);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background: rgba(3, 4, 7, 0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border); padding: 15px 0;
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.03em; cursor: pointer; }
+
+        .nav-links { display: flex; gap: 40px; }
+
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+            transition: 0.3s; position: relative; cursor: pointer;
+        }
+        .nav-links a:hover { color: var(--text-main); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+            background: var(--primary); transition: width 0.3s var(--ease);
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .menu-toggle { display: none; cursor: pointer; color: var(--text-main); }
+
+        /* --- HERO --- */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 60px; }
+        .hero h1 { font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 16px; letter-spacing: -0.04em; }
+        
+        .hero-typewriter {
+            font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--text-muted);
+            margin-bottom: 40px; height: 3.5rem; display: flex; align-items: center;
+        }
+        .cursor {
+            display: inline-block; width: 3px; height: 1em; background: var(--primary);
+            margin-left: 8px; animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .cta-group { display: flex; gap: 20px; }
+
+        .btn {
+            padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; text-decoration: none; transition: all 0.3s var(--ease);
+            position: relative; overflow: hidden; border: none; display: inline-block;
+        }
+        .btn-primary { background: var(--text-main); color: var(--bg-deep); }
+        .btn-primary:hover { box-shadow: 0 0 20px rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border); }
+        .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+
+        /* --- STATS --- */
+        .stats-strip {
+            display: flex; gap: 60px; border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border); padding: 30px 0; margin-top: 80px;
+            background: rgba(255,255,255,0.01);
+        }
+        .stat h4 { font-size: 2.5rem; font-weight: 600; color: var(--text-main); }
+        .stat p { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;}
+
+        /* --- CARDS --- */
+        .card {
+            background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border);
+            border-radius: 12px; padding: 32px; transition: all 0.4s var(--ease);
+        }
+        .card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-5px); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5); }
+
+        /* --- SKILLS --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .skill-icon { width: 40px; height: 40px; background: rgba(59, 130, 246, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+        .tech-pill { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin: 0 8px 8px 0; transition: 0.2s; }
+        .tech-pill:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* --- PROJECTS --- */
+        .project-item { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 100px; align-items: center; }
+        .project-item:nth-child(even) { direction: rtl; }
+        .project-item:nth-child(even) > * { direction: ltr; }
+        
+        .project-visual { 
+            position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; 
+            border: 1px solid var(--border); background: #1a1d2d;
+            display: flex; align-items: center; justify-content: center;
+        }
+        
+        .project-placeholder-icon {
+            opacity: 0.2; width: 48px; height: 48px;
+        }
+        
+        .project-content h3 { font-size: 2rem; margin-bottom: 16px; }
+        .project-meta { font-family: var(--font-mono); color: var(--primary); font-size: 0.85rem; margin-bottom: 20px; display: block; }
+
+        /* --- CONTACT --- */
+        .contact-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
+        input, textarea { width: 100%; background: var(--bg-surface); border: 1px solid var(--border); padding: 16px; color: var(--text-main); border-radius: 8px; font-family: var(--font-heading); font-size: 1rem; transition: 0.3s; margin-bottom: 20px; }
+        input:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
+
+        /* --- FOOTER --- */
+        footer { border-top: 1px solid var(--border); padding: 40px 0; margin-top: 100px; background: #020305; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: center; }
+        .system-status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 20px; }
+        .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; }
+
+        /* --- RESUME MODAL --- */
+        .resume-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px);
+            z-index: 2000; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+
+        .resume-overlay.active { opacity: 1; visibility: visible; }
+
+        .resume-content {
+            background: var(--bg-modal); border: 1px solid var(--border);
+            width: 100%; max-width: 800px; max-height: 90vh;
+            border-radius: 12px; padding: 40px;
+            overflow-y: auto; position: relative;
+            transform: translateY(20px); transition: transform 0.3s var(--ease);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .resume-overlay.active .resume-content { transform: translateY(0); }
+
+        .resume-close {
+            position: absolute; top: 20px; right: 20px;
+            background: rgba(255,255,255,0.1); color: var(--text-main);
+            border: none; width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: 0.2s; z-index: 10;
+        }
+        .resume-close:hover { background: rgba(255,255,255,0.2); }
+
+        /* Resume Styles */
+        .resume-header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
+        .resume-name { font-size: 2rem; font-weight: 700; color: var(--text-main); }
+        .resume-contact { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; color: var(--text-muted); font-size: 0.9rem; }
+        .resume-contact a { color: var(--primary); text-decoration: none; }
+        .resume-section { margin-bottom: 30px; }
+        .resume-section-title { font-size: 1.25rem; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+        .resume-sub-title { font-size: 1.1rem; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
+        .resume-meta { font-size: 0.9rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 10px; display: block; }
+        .resume-list { margin-left: 20px; margin-top: 10px; color: var(--text-muted); }
+        .resume-list li { margin-bottom: 8px; }
+        .resume-text { color: var(--text-muted); margin-bottom: 10px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .project-item, .project-item:nth-child(even) { grid-template-columns: 1fr; gap: 30px; }
+            .project-item:nth-child(even) { direction: ltr; }
+            .contact-layout { grid-template-columns: 1fr; }
+            .stats-strip { flex-wrap: wrap; gap: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-surface); flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .hero h1 { font-size: 2.8rem; }
+            .resume-content { padding: 20px; }
+        }
+
+        /* Scroll Animation Class */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s var(--ease); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <header id="navbar">
+        <div class="container">
+            <nav>
+                <div class="logo" onclick="scrollToSection('home')">LEON <span style="color:var(--primary)">KAUSHIK DEKA</span></div>
+                <div class="nav-links" id="navLinks">
+                    <a onclick="scrollToSection('home')">Home</a>
+                    <a onclick="scrollToSection('expertise')">Expertise</a>
+                    <a onclick="scrollToSection('projects')">Projects</a>
+                    <a onclick="scrollToSection('contact')">Contact</a>
+                    <a onclick="toggleResume()">Resume</a>
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero container">
+        <div class="reveal">
+            <h1>Architecting <span class="text-gradient">Resilient Security</span> Systems.</h1>
+            
+            <div class="hero-typewriter mono">
+                I am&nbsp;<span id="typewriter"></span><span class="cursor"></span>
+            </div>
+            
+            <p style="max-width: 600px; color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">
+                Leon Kaushik Deka. Specializing in advanced penetration testing, cloud defense architecture, and zero-trust implementation for enterprise clients.
+            </p>
+
+            <div class="cta-group">
+                <div class="btn btn-primary" onclick="scrollToSection('projects')">View Operations</div>
+                <div class="btn btn-outline" onclick="toggleResume()">Open Resume</div>
+            </div>
+
+            <div class="stats-strip">
+                <div class="stat">
+                    <h4>07+</h4>
+                    <p>Years Exp</p>
+                </div>
+                <div class="stat">
+                    <h4>100%</h4>
+                    <p>Success Rate</p>
+                </div>
+                <div class="stat">
+                    <h4>24/7</h4>
+                    <p>Monitoring</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" class="container">
+        <div class="reveal">
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Technical <span style="color:var(--primary)">Capabilities</span></h2>
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3>Offensive Ops</h3>
+                    </div>
+                    <p style="color:var(--text-muted); margin-bottom:20px; font-size:0.95rem;">
+                        Proactive threat hunting and vulnerability exploitation to identify weaknesses before adversaries.
+                    </p>
+                    <div>
+                        <span class="tech-pill">Red Teaming</span>
+                        <span class="tech-pill">Burp Suite</span>
+                        <span class="tech-pill">Metasploit</span>
+                        <span class="tech-pill">AD Attacks</span>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="card">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color:var(--secondary)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h3>Cloud Defense</h3>
+                    </div>
+                    <p style="color:var(--text-muted); margin-bottom:20px; font-size:0.95rem;">
+                        Hardening AWS, Azure, and Kubernetes clusters against modern cloud-native threats.
+                    </p>
+                    <div>
+                        <span class="tech-pill">Terraform</span>
+                        <span class="tech-pill">AWS GuardDuty</span>
+                        <span class="tech-pill">Docker Security</span>
+                        <span class="tech-pill">CI/CD Pipelines</span>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="card">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color:var(--accent)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        </div>
+                        <h3>Detection Eng.</h3>
+                    </div>
+                    <p style="color:var(--text-muted); margin-bottom:20px; font-size:0.95rem;">
+                        Building custom SIEM rules, Sigma signatures, and automated response playbooks.
+                    </p>
+                    <div>
+                        <span class="tech-pill">Splunk</span>
+                        <span class="tech-pill">Python Automation</span>
+                        <span class="tech-pill">Threat Intel</span>
+                        <span class="tech-pill">SOAR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="container">
+        <div class="reveal">
+            <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom:60px;">
+                <h2 style="font-size: 2.5rem;">Selected <span style="color:var(--primary)">Deployments</span></h2>
+                <a href="#" class="mono" style="color:var(--text-muted); font-size:0.9rem; text-decoration:none;">View Archive &rarr;</a>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="project-item">
+                <div class="project-visual">
+                    <!-- Placeholder Icon -->
+                    <svg class="project-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <div class="project-content">
+                    <span class="project-meta">CLOUD SECURITY // PYTHON // SERVERLESS</span>
+                    <h3>Zero-Trust Compliance Scanner</h3>
+                    <p style="color:var(--text-muted); margin:20px 0 30px;">
+                        A fully automated serverless solution that continuously scans enterprise infrastructure for compliance violations against CIS benchmarks. Integrated directly into CI/CD pipelines to prevent misconfigurations from reaching production.
+                    </p>
+                    <div class="btn btn-outline" style="width:fit-content; padding: 10px 24px;">Read Whitepaper</div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-item">
+                <div class="project-visual">
+                    <!-- Placeholder for Project 2 -->
+                    <svg class="project-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <div class="project-content">
+                    <span class="project-meta">OFFENSIVE // GOLANG // CRYPTO</span>
+                    <h3>Stealth C2 Framework</h3>
+                    <p style="color:var(--text-muted); margin:20px 0 30px;">
+                        Designed for Red Team operations, this lightweight Command & Control framework utilizes encrypted DNS tunneling to bypass enterprise firewalls and proxies. Includes a modular payload system.
+                    </p>
+                    <div class="btn btn-outline" style="width:fit-content; padding: 10px 24px;">View Architecture</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container" style="margin-bottom: 50px;">
+        <div class="reveal">
+            <div class="card" style="padding: 60px;">
+                <div class="contact-layout">
+                    <div>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Secure <br>Encrypted Line.</h2>
+                        <p style="color:var(--text-muted); margin-bottom: 40px;">
+                            Ready to fortify your digital perimeter? Reach out for audits, consulting, or collaboration.
+                        </p>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <span class="mono" style="color:var(--text-muted); font-size:0.8rem;">ENCRYPTED EMAIL</span><br>
+                            <a href="mailto:leonkaushikdeka@gmail.com" style="font-size:1.2rem; color:var(--text-main); text-decoration:none;">leonkaushikdeka@gmail.com</a>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <span class="mono" style="color:var(--text-muted); font-size:0.8rem;">LOCATION</span><br>
+                            <span style="font-size:1.1rem; color:var(--text-main);">Guwahati, Assam, India</span>
+                        </div>
+                    </div>
+
+                    <form id="contactForm" onsubmit="sendTransmission(event)">
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                            <input type="text" id="nameInput" placeholder="Identity" required>
+                            <input type="email" id="emailInput" placeholder="Return Address" required>
+                        </div>
+                        <textarea id="msgInput" rows="5" placeholder="Secure Message..." required></textarea>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">Send Transmission</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div style="font-weight:700; font-size:1.1rem;">LEON <span style="color:var(--primary)">KAUSHIK DEKA</span></div>
+            <div class="system-status">
+                <span>SYSTEM: <span style="color:var(--accent)">OPERATIONAL</span></span>
+                <span id="uptime">UPTIME: 0d 0h 0m 0s</span>
+                <span id="clock">00:00:00 UTC</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- RESUME MODAL POPUP -->
+    <div id="resumeModal" class="resume-overlay" onclick="closeResume(event)">
+        <div class="resume-content" onclick="event.stopPropagation()">
+            <button class="resume-close" onclick="closeResume(event)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <div class="resume-header">
+                <h1 class="resume-name">Leon Kaushik Deka</h1>
+                <div class="resume-contact">
+                    <span>Guwahati, Assam, India</span>
+                    <span>•</span>
+                    <a href="mailto:leonkaushikdeka@gmail.com">leonkaushikdeka@gmail.com</a>
+                    <span>•</span>
+                    <a href="https://linkedin.com/in/leonkaushikdeka" target="_blank">linkedin.com/in/leonkaushikdeka</a>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="resume-section-title">Professional Summary</h3>
+                <p class="resume-text">
+                    Cybersecurity-focused Computer Science graduate with structured hands-on training across SOC operations, offensive security, and AI-driven security analysis. Strong exposure to web and API penetration testing, adversary emulation, security automation using Python and AWS, and machine learning applications in digital forensics. Seeking entry-level roles in SOC, cybersecurity analysis, or security engineering.
+                </p>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="resume-section-title">Education</h3>
+                <h4 class="resume-sub-title">B.Tech. in Computer Science and Engineering (Honors in Cybersecurity)</h4>
+                <span class="resume-meta">Assam Skill University, Assam, India</span>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="resume-section-title">Technical Skills</h3>
+                <ul class="resume-list">
+                    <li><strong>Cybersecurity & SOC:</strong> SOC monitoring, alert triage, incident response fundamentals, Blue Team operations, threat detection, adversary emulation</li>
+                    <li><strong>Vulnerability Assessment & Pentesting:</strong> Web application testing, API security testing (OWASP Top 10, OWASP API Top 10), lab-based exploitation</li>
+                    <li><strong>AI / ML for Security:</strong> Machine learning for digital forensics, data science for cybersecurity, generative AI security use cases, AI-assisted vulnerability discovery</li>
+                    <li><strong>Cloud & Automation:</strong> AWS security fundamentals, Python-based security automation, Zero Trust Architecture</li>
+                    <li><strong>Tools:</strong> Burp Suite, OWASP crAPI, Atomic Red Team, Python</li>
+                    <li><strong>Governance & Risk:</strong> NIST SP 800-171, ISO 31000 Risk Management</li>
+                </ul>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="resume-section-title">Professional Training & Labs</h3>
+                <p class="resume-sub-title">The Ultimate Cybersecurity Awareness Bundle – CodeRed (70+ hours, 18 courses, labs-based)</p>
+                <ul class="resume-list">
+                    <li><strong>SOC & Blue Team Operations:</strong> SOC workflows, alert analysis, incident handling, and defensive monitoring</li>
+                    <li><strong>Red Team & Offensive Security:</strong> Attack methodologies, exploitation techniques, and adversary simulation</li>
+                    <li><strong>Web & API Penetration Testing:</strong> Advanced Burp Suite usage, OWASP Top 10, OWASP API Top 10 (crAPI)</li>
+                    <li><strong>Adversary Emulation:</strong> Atomic Red Team to simulate real-world attack techniques and validate detections</li>
+                    <li><strong>Cybersecurity Attack Lab Design:</strong> Built and configured safe penetration testing and attack simulation labs</li>
+                    <li><strong>AI & Data Science for Cybersecurity:</strong> Machine learning for digital forensics, AI-assisted vulnerability discovery</li>
+                    <li><strong>Generative AI for Cybersecurity:</strong> Threat simulation, security analysis, and defensive research use cases</li>
+                    <li><strong>Security Automation in AWS with Python:</strong> Automated defensive and offensive cloud security tasks</li>
+                    <li><strong>Zero Trust & Security Architecture:</strong> Enterprise security design and access control principles</li>
+                    <li><strong>OSINT & Dark Web Intelligence:</strong> Deep/Dark web analysis and threat intelligence gathering</li>
+                    <li><strong>Risk Management & Compliance:</strong> ISO 31000 risk frameworks and NIST SP 800-171 CUI protection</li>
+                </ul>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="resume-section-title">Academic Projects & Practical Exercises</h3>
+                <ul class="resume-list">
+                    <li><strong>Machine Learning for Digital Forensics:</strong> Applied ML techniques to analyze forensic data and support investigations</li>
+                    <li><strong>AI for Cybersecurity & Bug Bounty Hunting:</strong> Explored AI-driven vulnerability discovery and ethical hacking workflows</li>
+                    <li><strong>Atomic Red Team Adversary Emulation:</strong> Simulated attacker techniques to evaluate detection and response controls</li>
+                    <li><strong>Cybersecurity Attack Lab Design:</strong> Designed and tested controlled environments demonstrating common cyber-attacks</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- 1. Mouse Spotlight Effect ---
+        document.addEventListener('mousemove', (e) => {
+            document.body.style.setProperty('--x', e.clientX + 'px');
+            document.body.style.setProperty('--y', e.clientY + 'px');
+        });
+
+        // --- 2. Typewriter Effect ---
+        const roles = ["Cybersecurity Engineer", "Red Team Specialist", "Cloud Architect", "Ethical Hacker"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeSpeed = 100;
+        const deleteSpeed = 50;
+        const pauseTime = 2000;
+        const typeTarget = document.getElementById("typewriter");
+
+        function type() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typeTarget.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeTarget.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            let typeDelay = isDeleting ? deleteSpeed : typeSpeed;
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeDelay = pauseTime;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+            }
+            setTimeout(type, typeDelay);
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+        // --- 3. Scroll Logic ---
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if(element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            }
+            const nav = document.getElementById('navLinks');
+            if(nav.classList.contains('active')) nav.classList.remove('active');
+        }
+
+        // ---4. Mobile Menu ---
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // ---5. Navbar Glass ---
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('navbar');
+            if(window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // ---6. Scroll Reveal ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for(var i=0; i<reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if(elementTop < windowHeight - 100) reveals[i].classList.add("active");
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // ---7. Live Clock & Uptime (UPDATED TO SHOW SECONDS) ---
+        const startTime = new Date();
+        function updateFooter() {
+            const now = new Date();
+            
+            // Update Clock
+            document.getElementById('clock').innerText = now.toISOString().split('T')[1].split('.')[0] + " UTC";
+            
+            // Update Uptime
+            const diff = now - startTime;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60); // ADDED SECONDS CALCULATION
+            
+            // ADDED SECONDS TO THE TEXT STRING
+            document.getElementById('uptime').innerText = `UPTIME: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        setInterval(updateFooter, 1000); // Updates every 1 second
+        updateFooter();
+
+        // ---8. Resume Modal Logic ---
+        function toggleResume() {
+            const modal = document.getElementById('resumeModal');
+            modal.classList.add('active');
+            const nav = document.getElementById('navLinks');
+            if(nav.classList.contains('active')) nav.classList.remove('active');
+        }
+
+        function closeResume(e) {
+            if (e.target.classList.contains('resume-overlay') || e.target.closest('.resume-close')) {
+                document.getElementById('resumeModal').classList.remove('active');
+            }
+        }
+
+        // ---9. FIXED: Contact Form Logic (Sends Email via Client) ---
+        function sendTransmission(e) {
+            e.preventDefault(); 
+            
+            // Get values
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const msg = document.getElementById('msgInput').value;
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+
+            const recipient = "leonkaushikdeka@gmail.com";
+            const subject = `Portfolio Inquiry from ${name}`;
+            
+            // Use encodeURIComponent to safely handle spaces, newlines, and special chars
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`;
+            
+            // Construct the mailto link immediately
+            // This ensures the browser treats it as a direct action from the button click
+            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Visual Feedback
+            btn.innerText = "Opening Client...";
+            
+            // Trigger the mailto
+            window.location.href = mailtoLink;
+            
+            // Update button after a short delay to confirm action
+            setTimeout(() => {
+                btn.innerText = "Transmission Initiated";
+                btn.style.background = "var(--accent)";
+                btn.style.color = "#000";
+
+                // Reset Form and Button after a few seconds
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = "";
+                    btn.style.color = "";
+                    document.getElementById('contactForm').reset();
+                }, 3000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
