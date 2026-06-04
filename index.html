@@ -153,10 +153,6 @@
         .tech-pill { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin: 0 8px 8px 0; transition: 0.2s; }
         .tech-pill:hover { border-color: var(--primary); color: var(--primary); }
 
-        /* --- SPACING TWEAKS --- */
-        #expertise h2 { margin-top: 50px; margin-bottom: 50px; }
-        #projects h2 { margin-top: 50px; }
-
         /* --- PROJECTS --- */
         .project-item { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 100px; align-items: center; }
         .project-item:nth-child(even) { direction: rtl; }
@@ -245,8 +241,6 @@
             .hero h1 { font-size: 2.8rem; }
             .resume-content { padding: 20px; }
             
-            /* Reduce spacing on mobile to avoid scrolling fatigue */
-            #expertise h2, #projects h2 { margin-top: 30px; }
         }
 
         /* Scroll Animation Class */
@@ -313,7 +307,7 @@
     <!-- EXPERTISE -->
     <section id="expertise" class="container">
         <div class="reveal">
-            <h2 style="font-size: 2.5rem;">Technical <span style="color:var(--primary)">Capabilities</span></h2>
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Technical <span style="color:var(--primary)">Capabilities</span></h2>
             <div class="skills-grid">
                 <!-- Skill 1 -->
                 <div class="card">
@@ -402,7 +396,7 @@
             <!-- Project 2 -->
             <div class="project-item">
                 <div class="project-visual">
-                    <img src="stealth-c2-screenshot.png" alt="Stealth C2 Framework terminal screenshot" style="width:100%; border-radius:6px; border:1px solid rgba(0,240,255,0.15);">
+                    <svg class="project-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="8 9 12 13 8 17"></polyline><line x1="12" y1="17" x2="16" y2="17"></line></svg>
                 </div>
                 <div class="project-content">
                     <span class="project-meta">OFFENSIVE // GOLANG // CRYPTO</span>
