@@ -3,28 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Leon Kaushik Deka builds usable tools across cybersecurity, public safety, bioinformatics, student workflows, and AI-native systems. Try live demos, download apps, and use open source projects directly.">
-  <title>Leon Kaushik Deka | Usable Open Source Projects</title>
+  <meta name="description" content="A curated launch shelf for Leon Kaushik Deka's open source tools across cybersecurity, public safety, bioinformatics, student workflows, and AI-native systems.">
+  <title>Leon Kaushik Deka | Project Launch Shelf</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #080a0f;
-      --surface: #10141c;
-      --surface-2: #151b25;
-      --text: #f6f7fb;
-      --muted: #aab3c2;
-      --line: #2a3342;
-      --teal: #31d0aa;
-      --amber: #f3ba4d;
-      --rose: #ff6b8a;
-      --cyan: #65c7f7;
-      --green: #70d66b;
-      --danger: #ff7a7a;
+      --bg: #07080b;
+      --bg-2: #0b0d12;
+      --panel: #10131a;
+      --panel-2: #151923;
+      --panel-3: #1b202b;
+      --line: #273040;
+      --line-soft: rgba(255, 255, 255, 0.08);
+      --text: #f5f7fb;
+      --muted: #a6afbf;
+      --subtle: #778195;
+      --paper: #f4f1e8;
+      --ink: #0a0b0f;
+      --mint: #35d2a2;
+      --blue: #7ab7ff;
+      --gold: #e8bd66;
+      --red: #ff7f8f;
+      --violet: #bca7ff;
       --focus: #ffffff;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
       --radius: 8px;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.36);
     }
 
     * {
@@ -37,7 +42,11 @@
 
     body {
       margin: 0;
-      background: var(--bg);
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        var(--bg);
+      background-size: 72px 72px, 72px 72px, auto;
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.55;
@@ -47,11 +56,11 @@
       content: "";
       position: fixed;
       inset: 0;
+      z-index: -1;
       pointer-events: none;
       background:
-        linear-gradient(135deg, rgba(49, 208, 170, 0.08), transparent 32%),
-        linear-gradient(315deg, rgba(255, 107, 138, 0.07), transparent 34%);
-      z-index: -1;
+        linear-gradient(180deg, rgba(7, 8, 11, 0.3), var(--bg) 78%),
+        radial-gradient(900px 560px at 50% -160px, rgba(122, 183, 255, 0.17), transparent 62%);
     }
 
     a {
@@ -71,11 +80,11 @@
       left: 16px;
       top: -48px;
       z-index: 1000;
-      background: var(--text);
-      color: var(--bg);
       padding: 10px 14px;
       border-radius: 6px;
-      font-weight: 700;
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 800;
       transition: top 0.2s ease;
     }
 
@@ -91,302 +100,426 @@
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(8, 10, 15, 0.88);
-      backdrop-filter: blur(14px);
+      z-index: 30;
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(7, 8, 11, 0.86);
+      backdrop-filter: blur(18px);
     }
 
     .nav {
-      min-height: 72px;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 0;
+      font-weight: 900;
     }
 
     .brand-mark {
-      width: 32px;
-      height: 32px;
-      border: 1px solid var(--line);
-      border-radius: 7px;
+      width: 34px;
+      height: 34px;
       display: grid;
       place-items: center;
-      background: #f7f5ef;
-      color: #0b0d12;
+      border: 1px solid rgba(244, 241, 232, 0.24);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--ink);
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
+      font-weight: 700;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.95rem;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      background: rgba(16, 19, 26, 0.58);
     }
 
     .nav-links a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 6px;
+      color: var(--muted);
       text-decoration: none;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
     .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.06);
       color: var(--text);
     }
 
     .hero {
-      min-height: calc(100vh - 72px);
+      min-height: calc(100vh - 68px);
       display: grid;
       align-items: center;
-      padding: 56px 0 36px;
+      padding: 76px 0 48px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
       gap: 48px;
       align-items: center;
     }
 
-    .eyebrow {
-      color: var(--teal);
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--mint);
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin: 0 0 16px;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 820px;
-      font-size: clamp(2.7rem, 7vw, 5.8rem);
-      line-height: 0.96;
+      font-size: 0.82rem;
+      font-weight: 700;
       letter-spacing: 0;
     }
 
-    .lead {
-      max-width: 760px;
-      margin: 24px 0 0;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    .kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--mint);
+      box-shadow: 0 0 22px rgba(53, 210, 162, 0.8);
     }
 
-    .actions {
+    h1,
+    h2,
+    h3 {
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    h1 {
+      max-width: 860px;
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      font-weight: 900;
+    }
+
+    .hero-title-muted {
+      color: rgba(245, 247, 251, 0.55);
+    }
+
+    .lead {
+      max-width: 710px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+    }
+
+    .hero-actions,
+    .card-actions,
+    .footer-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+    }
+
+    .hero-actions {
       margin-top: 30px;
     }
 
-    .button {
-      min-height: 44px;
+    .button,
+    .small-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      padding: 11px 16px;
       border: 1px solid var(--line);
       border-radius: 7px;
+      background: rgba(16, 19, 26, 0.92);
+      color: var(--text);
       text-decoration: none;
       font-weight: 800;
-      background: var(--surface);
-      color: var(--text);
       cursor: pointer;
     }
 
-    .button.primary {
-      background: var(--text);
-      color: #080a0f;
-      border-color: var(--text);
+    .button {
+      min-height: 46px;
+      padding: 11px 16px;
     }
 
-    .button:hover {
-      transform: translateY(-1px);
+    .small-button {
+      min-height: 38px;
+      padding: 8px 10px;
+      font-size: 0.86rem;
+    }
+
+    .button.primary,
+    .small-button.primary {
+      background: var(--paper);
+      color: var(--ink);
+      border-color: var(--paper);
+    }
+
+    .button:hover,
+    .small-button:hover {
       border-color: rgba(255, 255, 255, 0.42);
+      transform: translateY(-1px);
     }
 
-    .button svg {
+    svg {
       width: 18px;
       height: 18px;
       flex: 0 0 auto;
     }
 
-    .command-panel {
+    .showcase-frame {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(16, 20, 28, 0.88);
+      background: linear-gradient(180deg, rgba(27, 32, 43, 0.96), rgba(11, 13, 18, 0.96));
       box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .panel-bar {
+    .frame-top {
       display: flex;
-      gap: 7px;
-      padding: 14px 16px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 48px;
+      padding: 0 14px;
       border-bottom: 1px solid var(--line);
-      background: #0c1017;
+      color: var(--subtle);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
     }
 
-    .panel-dot {
+    .window-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .window-dots span {
       width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: var(--rose);
+      background: var(--red);
     }
 
-    .panel-dot:nth-child(2) {
-      background: var(--amber);
+    .window-dots span:nth-child(2) {
+      background: var(--gold);
     }
 
-    .panel-dot:nth-child(3) {
-      background: var(--teal);
+    .window-dots span:nth-child(3) {
+      background: var(--mint);
     }
 
-    .panel-body {
-      padding: 20px;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .line {
-      display: block;
-      margin: 0 0 12px;
-      overflow-wrap: anywhere;
-    }
-
-    .line strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .line .ok {
-      color: var(--green);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      margin: 36px 0 0;
-      border: 1px solid var(--line);
-      background: var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .stat {
-      background: rgba(16, 20, 28, 0.88);
+    .screenshot-wrap {
+      position: relative;
+      min-height: 290px;
       padding: 18px;
+      background:
+        linear-gradient(transparent, rgba(7, 8, 11, 0.72)),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: auto, 42px 42px, 42px 42px;
     }
 
-    .stat b {
+    .screenshot {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 7px;
       display: block;
-      font-size: 1.6rem;
+      background: #05070b;
+    }
+
+    .frame-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      background: rgba(16, 19, 26, 0.82);
+    }
+
+    .metric {
+      padding: 16px;
+      border-right: 1px solid var(--line);
+    }
+
+    .metric:last-child {
+      border-right: 0;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.25rem;
       line-height: 1;
     }
 
-    .stat span {
+    .metric span {
       display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.88rem;
+      margin-top: 7px;
+      color: var(--subtle);
+      font-size: 0.82rem;
     }
 
     section {
-      padding: 78px 0;
+      padding: 74px 0;
     }
 
     .section-head {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.52fr);
+      gap: 32px;
       align-items: end;
-      gap: 28px;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1.05;
-      letter-spacing: 0;
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 900;
     }
 
     .section-head p {
-      max-width: 560px;
       margin: 0;
       color: var(--muted);
     }
 
-    .use-grid {
+    .launch-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--panel);
+    }
+
+    .launch-item {
+      min-height: 178px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent),
+        var(--panel);
+    }
+
+    .launch-item:last-child {
+      border-right: 0;
+    }
+
+    .launch-item svg {
+      margin-bottom: 24px;
+      color: var(--paper);
+    }
+
+    .launch-item h3 {
+      margin: 0;
+      font-size: 1.06rem;
+      font-weight: 800;
+    }
+
+    .launch-item p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 14px;
     }
 
-    .use-card,
+    .feature-card,
+    .side-card,
     .project-card,
-    .note,
-    .contact-box {
+    .playbook-card,
+    .contact-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(16, 20, 28, 0.86);
+      background: rgba(16, 19, 26, 0.9);
     }
 
-    .use-card {
-      padding: 18px;
-    }
-
-    .use-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 8px;
+    .feature-card {
+      padding: 22px;
+      min-height: 360px;
       display: grid;
-      place-items: center;
-      margin-bottom: 16px;
-      background: #f7f5ef;
-      color: #080a0f;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      position: relative;
     }
 
-    .use-card h3,
-    .project-card h3,
-    .note h3,
-    .contact-box h3 {
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(53, 210, 162, 0.9), transparent);
+    }
+
+    .feature-eyebrow,
+    .project-meta,
+    .playbook-label {
+      color: var(--mint);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .feature-card h3 {
+      max-width: 780px;
+      margin: 16px 0 0;
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      font-weight: 900;
+    }
+
+    .feature-card p {
+      max-width: 740px;
+      margin: 18px 0 0;
+      align-self: end;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .side-card {
+      padding: 20px;
+    }
+
+    .side-card h3 {
       margin: 0;
-      font-size: 1.08rem;
-      line-height: 1.2;
+      font-size: 1.14rem;
     }
 
-    .use-card p,
-    .project-card p,
-    .note p,
-    .contact-box p {
+    .side-card p {
       margin: 10px 0 0;
       color: var(--muted);
     }
 
     .toolbar {
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) minmax(180px, 260px);
+      grid-template-columns: minmax(250px, 1fr) minmax(180px, 260px);
       gap: 12px;
-      margin: 0 0 18px;
+      margin-bottom: 16px;
     }
 
     label {
       display: block;
-      color: var(--text);
-      font-weight: 700;
       margin-bottom: 7px;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 800;
     }
 
     input,
@@ -395,7 +528,7 @@
       min-height: 44px;
       border: 1px solid var(--line);
       border-radius: 7px;
-      background: #0c1017;
+      background: #0c0f15;
       color: var(--text);
       padding: 10px 12px;
       font: inherit;
@@ -403,58 +536,82 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       gap: 14px;
     }
 
     .project-card {
-      min-height: 100%;
-      padding: 18px;
+      grid-column: span 4;
+      min-height: 270px;
+      padding: 17px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
+    .project-card.wide {
+      grid-column: span 6;
+    }
+
+    .project-card.featured {
+      grid-column: span 8;
+      background:
+        linear-gradient(135deg, rgba(122, 183, 255, 0.11), transparent 42%),
+        rgba(16, 19, 26, 0.94);
+    }
+
     .project-top {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       align-items: start;
+      gap: 14px;
+    }
+
+    .project-card h3 {
+      margin: 7px 0 0;
+      font-size: 1.28rem;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       min-height: 28px;
       padding: 4px 8px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      color: var(--text);
+      background: #0c0f15;
+      color: var(--muted);
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
+      font-weight: 700;
       white-space: nowrap;
-      background: #0c1017;
     }
 
     .badge.live {
-      border-color: rgba(49, 208, 170, 0.55);
-      color: var(--teal);
+      border-color: rgba(53, 210, 162, 0.42);
+      color: var(--mint);
     }
 
     .badge.download {
-      border-color: rgba(243, 186, 77, 0.55);
-      color: var(--amber);
+      border-color: rgba(232, 189, 102, 0.42);
+      color: var(--gold);
     }
 
     .badge.research {
-      border-color: rgba(101, 199, 247, 0.55);
-      color: var(--cyan);
+      border-color: rgba(122, 183, 255, 0.45);
+      color: var(--blue);
     }
 
     .badge.caution {
-      border-color: rgba(255, 122, 122, 0.55);
-      color: var(--danger);
+      border-color: rgba(255, 127, 143, 0.45);
+      color: var(--red);
     }
 
     .tags {
@@ -465,44 +622,14 @@
     }
 
     .tag {
+      padding: 4px 7px;
       border: 1px solid var(--line);
       border-radius: 6px;
-      padding: 4px 7px;
-      color: var(--muted);
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--subtle);
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .card-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .small-link {
-      min-height: 38px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 800;
-      font-size: 0.86rem;
-      background: #0c1017;
-    }
-
-    .small-link:hover {
-      border-color: rgba(255, 255, 255, 0.42);
-    }
-
-    .small-link svg {
-      width: 16px;
-      height: 16px;
+      font-size: 0.7rem;
+      font-weight: 600;
     }
 
     .hidden {
@@ -511,84 +638,112 @@
 
     .empty-state {
       display: none;
+      margin-top: 14px;
+      padding: 18px;
       border: 1px dashed var(--line);
       border-radius: var(--radius);
-      padding: 24px;
       color: var(--muted);
-      background: rgba(16, 20, 28, 0.62);
+      background: rgba(16, 19, 26, 0.7);
     }
 
     .empty-state.visible {
       display: block;
     }
 
-    .roadmap {
+    .playbook-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
 
-    .note {
+    .playbook-card {
       padding: 20px;
     }
 
-    .note ul {
+    .playbook-card h3 {
+      margin: 12px 0 0;
+      font-size: 1.12rem;
+    }
+
+    .playbook-card ul {
       margin: 14px 0 0;
       padding-left: 20px;
       color: var(--muted);
     }
 
-    .note li {
-      margin: 7px 0;
+    .playbook-card li {
+      margin: 8px 0;
     }
 
-    .contact-grid {
+    .contact-card {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
+      background:
+        linear-gradient(90deg, rgba(188, 167, 255, 0.1), transparent 58%),
+        rgba(16, 19, 26, 0.92);
     }
 
-    .contact-box {
-      padding: 22px;
+    .contact-card h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 4vw, 3.8rem);
+      font-weight: 900;
+    }
+
+    .contact-card p {
+      max-width: 640px;
+      margin: 13px 0 0;
+      color: var(--muted);
     }
 
     .site-footer {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--line-soft);
       padding: 28px 0;
-      color: var(--muted);
+      color: var(--subtle);
     }
 
     .footer-row {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
 
     .mono {
       font-family: "JetBrains Mono", monospace;
     }
 
-    @media (max-width: 940px) {
+    @media (max-width: 1020px) {
       .hero-grid,
-      .roadmap,
-      .contact-grid {
+      .section-head,
+      .feature-grid,
+      .contact-card {
         grid-template-columns: 1fr;
       }
 
-      .use-grid,
-      .project-grid {
+      .launch-strip {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
+      .launch-item:nth-child(2) {
+        border-right: 0;
       }
 
-      .section-head {
-        align-items: start;
-        flex-direction: column;
+      .launch-item:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project-card,
+      .project-card.wide,
+      .project-card.featured {
+        grid-column: span 6;
+      }
+
+      .playbook-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -598,32 +753,65 @@
       }
 
       .nav {
-        min-height: auto;
-        padding: 16px 0;
-        align-items: start;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
       }
 
       .nav-links {
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        gap: 10px 14px;
-        font-size: 0.88rem;
+        width: 100%;
+        overflow-x: auto;
       }
 
       .hero {
         min-height: auto;
-        padding: 42px 0 28px;
+        padding: 48px 0 28px;
       }
 
-      .use-grid,
-      .project-grid,
-      .toolbar,
-      .stats {
+      .hero-grid {
         grid-template-columns: 1fr;
       }
 
+      .showcase-frame {
+        display: none;
+      }
+
+      .launch-strip,
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .launch-item,
+      .launch-item:nth-child(2) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .launch-item:last-child {
+        border-bottom: 0;
+      }
+
+      .project-card,
+      .project-card.wide,
+      .project-card.featured {
+        grid-column: span 12;
+      }
+
+      .frame-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .metric {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .metric:last-child {
+        border-bottom: 0;
+      }
+
       section {
-        padding: 54px 0;
+        padding: 56px 0;
       }
     }
   </style>
@@ -638,10 +826,10 @@
         <span>Leon Kaushik Deka</span>
       </a>
       <div class="nav-links">
-        <a href="#use-now">Use now</a>
+        <a href="#launch">Launch paths</a>
+        <a href="#featured">Featured</a>
         <a href="#projects">Projects</a>
         <a href="#playbook">Playbook</a>
-        <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
@@ -650,79 +838,95 @@
     <section id="top" class="hero">
       <div class="shell hero-grid">
         <div>
-          <p class="eyebrow">Open source projects that should be usable, not just browsable.</p>
-          <h1>Public safety, cybersecurity, bioinformatics, and student tools you can try directly.</h1>
-          <p class="lead">This is the launch shelf for Leon Kaushik Deka's repositories: live demos where possible, downloads for apps and binaries, and clear status labels so users know what is ready, experimental, or research-only.</p>
-          <div class="actions">
+          <p class="kicker">27 public repositories, curated for direct use</p>
+          <h1>Software shelf for tools that should leave GitHub.</h1>
+          <p class="lead">A curated index for projects across cybercrime reporting, security research, public safety, genomics, student workflows, and experimental AI-native systems. Each project gets a practical next step: try it, download it, deploy it, or read the safety notes.</p>
+          <div class="hero-actions">
             <a class="button primary" href="#projects">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              Browse projects
+              Browse usable repos
             </a>
-            <a class="button" href="https://github.com/leonkaushikdeka" target="_blank" rel="noreferrer">
+            <a class="button" href="https://github.com/leonkaushikdeka" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5a10.8 10.8 0 0 0-5.5 0C8.5 2 7.5 2 7.5 2c-.3 1.15-.3 2.35 0 3.5a5.4 5.4 0 0 0-1 3.5c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
               GitHub profile
             </a>
           </div>
-          <div class="stats" aria-label="Repository showcase summary">
-            <div class="stat"><b>27</b><span>public repositories</span></div>
-            <div class="stat"><b>8</b><span>direct-use candidates</span></div>
-            <div class="stat"><b>5</b><span>project categories</span></div>
-            <div class="stat"><b>1</b><span>public hub</span></div>
-          </div>
         </div>
 
-        <aside class="command-panel" aria-label="Direct use checklist">
-          <div class="panel-bar" aria-hidden="true">
-            <span class="panel-dot"></span>
-            <span class="panel-dot"></span>
-            <span class="panel-dot"></span>
+        <aside class="showcase-frame" aria-label="Featured security project preview">
+          <div class="frame-top">
+            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span>featured-preview / StealthC2</span>
           </div>
-          <div class="panel-body">
-            <span class="line"><strong>$ goal</strong> make every repo actionable</span>
-            <span class="line"><strong class="ok">live</strong> browser demos for static tools</span>
-            <span class="line"><strong class="ok">release</strong> APKs and CLI binaries</span>
-            <span class="line"><strong class="ok">docs</strong> quick starts and limitations</span>
-            <span class="line"><strong class="ok">trust</strong> privacy, security, status notes</span>
+          <div class="screenshot-wrap">
+            <img class="screenshot" src="stealth-c2-screenshot.png" alt="Terminal-style screenshot preview of the StealthC2 project">
+          </div>
+          <div class="frame-metrics">
+            <div class="metric"><strong>12</strong><span>featured projects</span></div>
+            <div class="metric"><strong>5</strong><span>launch paths</span></div>
+            <div class="metric"><strong>1</strong><span>public hub</span></div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="use-now">
+    <section id="launch">
       <div class="shell">
         <div class="section-head">
-          <h2>Where The Work Should Live</h2>
-          <p>Different repo types need different launch paths. The portfolio is the hub; demos, downloads, and documentation live where users can reach them with one action.</p>
+          <h2>Launch paths, not dead links.</h2>
+          <p>The hub is only useful if every project has an obvious action. Static tools go to Pages, web apps to hosted demos, mobile and CLI tools to releases, and research tools to safe guided docs.</p>
         </div>
-        <div class="use-grid">
-          <article class="use-card">
-            <div class="use-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"></path><path d="M3 12h18"></path></svg>
-            </div>
+        <div class="launch-strip" aria-label="Recommended hosting targets">
+          <article class="launch-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v18"></path><path d="M3 12h18"></path></svg>
             <h3>GitHub Pages</h3>
-            <p>Best for browser-only tools, static docs, privacy-first utilities, and project microsites.</p>
+            <p>Browser tools, docs, privacy-first utilities, static demos.</p>
           </article>
-          <article class="use-card">
-            <div class="use-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 9 16H3L12 3Z"></path></svg>
-            </div>
+          <article class="launch-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 3 9 16H3L12 3Z"></path></svg>
             <h3>Vercel or Netlify</h3>
-            <p>Best for TypeScript, React, dashboards, previews, and custom domains attached to GitHub.</p>
+            <p>TypeScript apps, dashboards, previews, custom domains.</p>
           </article>
-          <article class="use-card">
-            <div class="use-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"></path><path d="M2 12h20"></path><path d="m4.93 4.93 14.14 14.14"></path><path d="m19.07 4.93-14.14 14.14"></path></svg>
-            </div>
+          <article class="launch-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20"></path><path d="M2 12h20"></path><path d="m4.93 4.93 14.14 14.14"></path><path d="m19.07 4.93-14.14 14.14"></path></svg>
             <h3>Spaces or Streamlit</h3>
-            <p>Best for Python, AI, analysis, bioinformatics, and interactive research prototypes.</p>
+            <p>Python, AI, analysis, bioinformatics, research prototypes.</p>
           </article>
-          <article class="use-card">
-            <div class="use-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>
-            </div>
+          <article class="launch-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>
             <h3>GitHub Releases</h3>
-            <p>Best for Flutter APKs, Rust binaries, changelogs, checksums, and versioned downloads.</p>
+            <p>APK files, Rust binaries, versioned downloads, changelogs.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="shell">
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-eyebrow">PRIMARY DIRECT-USE CANDIDATE</span>
+            <h3>Cybercrime Transaction ID Extractor</h3>
+            <p>Runs in the browser, supports a clear public need, and can be presented as privacy-first because users do not need to upload sensitive files to a backend.</p>
+            <div class="card-actions">
+              <a class="button primary" href="https://leonkaushikdeka.github.io/cybercrime-transactionid-extracting-tool/" target="_blank" rel="noopener noreferrer">Try live demo</a>
+              <a class="button" href="https://github.com/leonkaushikdeka/cybercrime-transactionid-extracting-tool" target="_blank" rel="noopener noreferrer">View code</a>
+            </div>
+          </article>
+          <div class="side-stack">
+            <article class="side-card">
+              <h3>Next best app release</h3>
+              <p>ASU Attendance and SecureScan should get APK files, screenshots, version notes, and install instructions under GitHub Releases.</p>
+            </article>
+            <article class="side-card">
+              <h3>Best research demo</h3>
+              <p>WasmScanQ and NucleoQC should use guided sample data so users can evaluate the idea without domain setup friction.</p>
+            </article>
+            <article class="side-card">
+              <h3>Safety-first showcase</h3>
+              <p>StealthC2, AEGIS, and PhantomWeave should stay documentation-first, with authorized-use boundaries and no unsafe one-click paths.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -730,14 +934,14 @@
     <section id="projects">
       <div class="shell">
         <div class="section-head">
-          <h2>Project Shelf</h2>
-          <p>Filter by category or search by name, language, or use case. Status labels make the expected path clear before someone opens a repo.</p>
+          <h2>Project matrix.</h2>
+          <p>Filter by category or search by name, language, or use case. The layout intentionally gives more weight to the projects most ready for real users.</p>
         </div>
 
         <div class="toolbar" aria-label="Project filters">
           <div>
             <label for="projectSearch">Search projects</label>
-            <input id="projectSearch" type="search" placeholder="Try cybercrime, Flutter, bioinformatics, Python">
+            <input id="projectSearch" type="search" placeholder="Try cybercrime, Flutter, Rust, bioinformatics">
           </div>
           <div>
             <label for="categoryFilter">Category</label>
@@ -753,160 +957,130 @@
         </div>
 
         <div id="projectGrid" class="project-grid">
-          <article class="project-card" data-category="security" data-search="cybercrime transaction id extracting tool html privacy india browser">
+          <article class="project-card featured" data-category="security" data-search="cybercrime transaction id extracting tool html privacy india browser">
             <div class="project-top">
-              <h3>Cybercrime Transaction ID Extractor</h3>
+              <div>
+                <span class="project-meta">HTML / privacy-first / India</span>
+                <h3>Cybercrime Transaction ID Extractor</h3>
+              </div>
               <span class="badge live">Browser demo</span>
             </div>
             <p>Local browser utility for finding transaction IDs from CSV, Excel, or PDF files during cybercrime reporting.</p>
-            <div class="tags"><span class="tag">HTML</span><span class="tag">privacy-first</span><span class="tag">India</span></div>
+            <div class="tags"><span class="tag">GitHub Pages</span><span class="tag">direct use</span><span class="tag">no backend</span></div>
             <div class="card-actions">
-              <a class="small-link" href="https://leonkaushikdeka.github.io/cybercrime-transactionid-extracting-tool/" target="_blank" rel="noreferrer">Try demo</a>
-              <a class="small-link" href="https://github.com/leonkaushikdeka/cybercrime-transactionid-extracting-tool" target="_blank" rel="noreferrer">Code</a>
+              <a class="small-button primary" href="https://leonkaushikdeka.github.io/cybercrime-transactionid-extracting-tool/" target="_blank" rel="noopener noreferrer">Try demo</a>
+              <a class="small-button" href="https://github.com/leonkaushikdeka/cybercrime-transactionid-extracting-tool" target="_blank" rel="noopener noreferrer">Code</a>
             </div>
           </article>
 
           <article class="project-card" data-category="public-safety" data-search="roadsos emergency response triage ambulance python golden hour">
             <div class="project-top">
-              <h3>RoadSOS</h3>
+              <div><span class="project-meta">Python / public safety</span><h3>RoadSOS</h3></div>
               <span class="badge research">Prototype</span>
             </div>
-            <p>AI-assisted emergency response concept with one-tap SOS, voice triage, and ambulance dispatch workflows.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">public safety</span><span class="tag">triage</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/roadsos" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#playbook">Deploy path</a>
-            </div>
+            <p>AI-assisted emergency response concept with SOS, voice triage, and ambulance workflow ideas.</p>
+            <div class="tags"><span class="tag">triage</span><span class="tag">Golden Hour</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/roadsos" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#playbook">Deploy path</a></div>
           </article>
 
-          <article class="project-card" data-category="student" data-search="asu attendance flutter dart mobile app college student">
+          <article class="project-card wide" data-category="student" data-search="asu attendance flutter dart mobile app college student">
             <div class="project-top">
-              <h3>ASU Attendance</h3>
+              <div><span class="project-meta">Dart / Flutter / mobile</span><h3>ASU Attendance</h3></div>
               <span class="badge download">APK release</span>
             </div>
-            <p>Flutter attendance app for college workflows. Best showcased with screenshots and an Android release.</p>
-            <div class="tags"><span class="tag">Dart</span><span class="tag">Flutter</span><span class="tag">mobile</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/asu_attendance" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="https://github.com/leonkaushikdeka/asu_attendance/releases" target="_blank" rel="noreferrer">Releases</a>
-            </div>
+            <p>College attendance app best packaged with screenshots, a signed APK, and a quick install guide.</p>
+            <div class="tags"><span class="tag">Android</span><span class="tag">student workflow</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/asu_attendance" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="https://github.com/leonkaushikdeka/asu_attendance/releases" target="_blank" rel="noopener noreferrer">Releases</a></div>
           </article>
 
           <article class="project-card" data-category="security" data-search="securescan app flutter android deepfake phishing offline">
             <div class="project-top">
-              <h3>SecureScan App</h3>
-              <span class="badge download">Android download</span>
+              <div><span class="project-meta">Dart / offline security</span><h3>SecureScan App</h3></div>
+              <span class="badge download">Android</span>
             </div>
-            <p>Offline Flutter Android app for detecting phishing URLs and deepfake risk signals on-device.</p>
-            <div class="tags"><span class="tag">Dart</span><span class="tag">Android</span><span class="tag">offline</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/securescan-app" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="https://github.com/leonkaushikdeka/securescan-app/releases" target="_blank" rel="noreferrer">Releases</a>
-            </div>
+            <p>Offline Android app for phishing URL and deepfake risk signals.</p>
+            <div class="tags"><span class="tag">Flutter</span><span class="tag">offline</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/securescan-app" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="https://github.com/leonkaushikdeka/securescan-app/releases" target="_blank" rel="noopener noreferrer">Releases</a></div>
           </article>
 
           <article class="project-card" data-category="bio" data-search="wasmscanq wasm rust genomic visualization bioinformatics">
             <div class="project-top">
-              <h3>WasmScanQ</h3>
+              <div><span class="project-meta">Rust / WASM / genomics</span><h3>WasmScanQ</h3></div>
               <span class="badge live">WASM demo</span>
             </div>
-            <p>Zero-infrastructure genomic visualization engine built around Rust and WebAssembly.</p>
-            <div class="tags"><span class="tag">Rust</span><span class="tag">WASM</span><span class="tag">genomics</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/wasmscanq" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#playbook">Demo path</a>
-            </div>
+            <p>Zero-infrastructure genomic visualization engine for browser-first bioinformatics workflows.</p>
+            <div class="tags"><span class="tag">WASM</span><span class="tag">visualization</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/wasmscanq" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#playbook">Demo path</a></div>
           </article>
 
-          <article class="project-card" data-category="security" data-search="difig digital investigation forensics intelligence gear rust cli">
+          <article class="project-card wide" data-category="security" data-search="difig digital investigation forensics intelligence gear rust cli">
             <div class="project-top">
-              <h3>DIFIG</h3>
+              <div><span class="project-meta">Rust / forensics / CLI</span><h3>DIFIG</h3></div>
               <span class="badge download">CLI binary</span>
             </div>
-            <p>High-performance Rust forensics tooling for digital investigation workflows.</p>
-            <div class="tags"><span class="tag">Rust</span><span class="tag">forensics</span><span class="tag">CLI</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/difig" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="https://github.com/leonkaushikdeka/difig/releases" target="_blank" rel="noreferrer">Releases</a>
-            </div>
+            <p>High-performance digital investigation tooling. Best presented with release binaries and copy-paste example commands.</p>
+            <div class="tags"><span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">macOS</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/difig" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="https://github.com/leonkaushikdeka/difig/releases" target="_blank" rel="noopener noreferrer">Releases</a></div>
           </article>
 
           <article class="project-card" data-category="student" data-search="college document manager typescript indian college students documents">
             <div class="project-top">
-              <h3>College Doc Manager</h3>
+              <div><span class="project-meta">TypeScript / students</span><h3>College Doc Manager</h3></div>
               <span class="badge live">Web app</span>
             </div>
-            <p>Document management for Indian college students, including storing, organizing, scanning, and recovery workflows.</p>
-            <div class="tags"><span class="tag">TypeScript</span><span class="tag">students</span><span class="tag">documents</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/college-doc-manager" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#playbook">Deploy path</a>
-            </div>
+            <p>Document management for Indian college students, with demo-data deployment potential.</p>
+            <div class="tags"><span class="tag">documents</span><span class="tag">Vercel</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/college-doc-manager" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#playbook">Deploy path</a></div>
           </article>
 
           <article class="project-card" data-category="bio" data-search="nucleoqc biologics quality control python bio">
             <div class="project-top">
-              <h3>NucleoQC</h3>
-              <span class="badge research">Research app</span>
+              <div><span class="project-meta">Python / biologics QC</span><h3>NucleoQC</h3></div>
+              <span class="badge research">Research</span>
             </div>
-            <p>Open-source biologics quality control suite. Best presented with sample datasets and a guided demo.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">QC</span><span class="tag">bio</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/NucleoQC" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#playbook">Demo path</a>
-            </div>
+            <p>Open-source biologics quality control suite that needs sample data and guided demo flow.</p>
+            <div class="tags"><span class="tag">QC</span><span class="tag">sample data</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/NucleoQC" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#playbook">Demo path</a></div>
           </article>
 
           <article class="project-card" data-category="experimental" data-search="aarohi programming language ai native persistent state probability types makefile">
             <div class="project-top">
-              <h3>Aarohi</h3>
+              <div><span class="project-meta">AI-native language</span><h3>Aarohi</h3></div>
               <span class="badge research">Language lab</span>
             </div>
-            <p>Experimental AI-native programming language with persistent state, probability types, and resilient execution.</p>
-            <div class="tags"><span class="tag">language</span><span class="tag">AI-native</span><span class="tag">research</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/aarohi" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#playbook">Docs path</a>
-            </div>
+            <p>Experimental language with persistent state, probability types, and resilient execution.</p>
+            <div class="tags"><span class="tag">compiler</span><span class="tag">docs</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/aarohi" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#playbook">Docs path</a></div>
           </article>
 
-          <article class="project-card" data-category="security" data-search="stealthc2 dns tunneling c2 red team rust aes gcm security">
+          <article class="project-card wide" data-category="security" data-search="stealthc2 dns tunneling c2 red team rust aes gcm security">
             <div class="project-top">
-              <h3>StealthC2</h3>
+              <div><span class="project-meta">Rust / authorized red team</span><h3>StealthC2</h3></div>
               <span class="badge caution">Lab only</span>
             </div>
-            <p>DNS-tunneling C2 framework for authorized red-team labs. Public showcase should stay documentation-first and safety-framed.</p>
-            <div class="tags"><span class="tag">Rust</span><span class="tag">red team</span><span class="tag">authorized use</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/StealthC2" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#security-note">Safety note</a>
-            </div>
+            <p>DNS-tunneling C2 framework. Showcase as defensive research and authorized lab tooling, with clear boundaries.</p>
+            <div class="tags"><span class="tag">authorized use</span><span class="tag">safety note</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/StealthC2" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#security-note">Safety note</a></div>
           </article>
 
           <article class="project-card" data-category="security" data-search="phantomweave ai agent behavioral forensics attribution python anomalies">
             <div class="project-top">
-              <h3>PhantomWeave</h3>
-              <span class="badge research">Forensics research</span>
+              <div><span class="project-meta">Python / AI forensics</span><h3>PhantomWeave</h3></div>
+              <span class="badge research">Research</span>
             </div>
-            <p>AI agent behavioral forensics and attribution engine for tracing sessions and detecting anomalies.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">AI forensics</span><span class="tag">attribution</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/PhantomWeave" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#playbook">Demo path</a>
-            </div>
+            <p>Behavioral forensics and attribution engine for tracing AI agent sessions.</p>
+            <div class="tags"><span class="tag">attribution</span><span class="tag">anomaly</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/PhantomWeave" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#playbook">Demo path</a></div>
           </article>
 
           <article class="project-card" data-category="security" data-search="zero trust compliance scanner python serverless cis ci cd cloud security">
             <div class="project-top">
-              <h3>Zero Trust Compliance Scanner</h3>
-              <span class="badge research">Cloud blueprint</span>
+              <div><span class="project-meta">Python / compliance</span><h3>Zero Trust Scanner</h3></div>
+              <span class="badge research">Blueprint</span>
             </div>
-            <p>Serverless compliance scanner concept for CIS checks and CI/CD misconfiguration prevention.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">cloud</span><span class="tag">compliance</span></div>
-            <div class="card-actions">
-              <a class="small-link" href="https://github.com/leonkaushikdeka/Zero-Trust-Compliance-Scanner-2.0" target="_blank" rel="noreferrer">Code</a>
-              <a class="small-link" href="#playbook">Docs path</a>
-            </div>
+            <p>Serverless compliance scanner concept for CIS checks and CI/CD guardrails.</p>
+            <div class="tags"><span class="tag">cloud</span><span class="tag">CIS</span></div>
+            <div class="card-actions"><a class="small-button" href="https://github.com/leonkaushikdeka/Zero-Trust-Compliance-Scanner-2.0" target="_blank" rel="noopener noreferrer">Code</a><a class="small-button" href="#playbook">Docs path</a></div>
           </article>
         </div>
 
@@ -917,30 +1091,39 @@
     <section id="playbook">
       <div class="shell">
         <div class="section-head">
-          <h2>Make Each Repo Directly Usable</h2>
-          <p>The showcase works best when every important repo has a visible next action. This is the publishing checklist to apply across the account.</p>
+          <h2>Publishing playbook.</h2>
+          <p>The site is the front door. The repo-level work below is what makes the projects usable by someone who lands here for the first time.</p>
         </div>
 
-        <div class="roadmap">
-          <article class="note">
-            <h3>Direct launch plan</h3>
+        <div class="playbook-grid">
+          <article class="playbook-card">
+            <span class="playbook-label">DIRECT ACTION</span>
+            <h3>Every repo needs one primary button</h3>
             <ul>
-              <li>Enable GitHub Pages for browser-only tools and static demos.</li>
-              <li>Deploy TypeScript apps to Vercel or Netlify with a demo account or fake data.</li>
-              <li>Publish Flutter APKs under GitHub Releases with screenshots and changelogs.</li>
-              <li>Publish Rust CLI binaries for Windows, Linux, and macOS releases.</li>
-              <li>Use Hugging Face Spaces or Streamlit for Python demos with sample data.</li>
+              <li>Try live demo</li>
+              <li>Download APK or binary</li>
+              <li>Deploy with sample data</li>
+              <li>Run locally in under five commands</li>
             </ul>
           </article>
-
-          <article class="note" id="security-note">
-            <h3>Trust and safety pass</h3>
+          <article class="playbook-card">
+            <span class="playbook-label">README QUALITY</span>
+            <h3>Make usage obvious above the fold</h3>
             <ul>
-              <li>Add privacy notes for tools that process documents, evidence, health, tax, or student data.</li>
-              <li>State prototype limits clearly for emergency, medical, security, and compliance projects.</li>
-              <li>Keep offensive security projects documentation-first and restricted to authorized lab use.</li>
-              <li>Do not publish secrets, tokens, production credentials, or real case data in demos.</li>
-              <li>Use stable README sections: Try, Install, Quick start, Status, Limitations, License.</li>
+              <li>One-sentence value proposition</li>
+              <li>Screenshots or GIFs</li>
+              <li>Quick start and limitations</li>
+              <li>License and project status</li>
+            </ul>
+          </article>
+          <article class="playbook-card" id="security-note">
+            <span class="playbook-label">TRUST AND SAFETY</span>
+            <h3>Handle sensitive domains carefully</h3>
+            <ul>
+              <li>Privacy notes for document or case-data tools</li>
+              <li>Prototype disclaimers for emergency and compliance tools</li>
+              <li>Authorized-use framing for offensive security projects</li>
+              <li>No secrets, real case data, or unsafe public demos</li>
             </ul>
           </article>
         </div>
@@ -949,25 +1132,15 @@
 
     <section id="contact">
       <div class="shell">
-        <div class="section-head">
-          <h2>Use, Review, Or Collaborate</h2>
-          <p>For users, each project should have a one-click path. For collaborators, the GitHub profile and direct contact are the fastest entry points.</p>
-        </div>
-        <div class="contact-grid">
-          <article class="contact-box">
-            <h3>GitHub</h3>
-            <p>Browse source, open issues, check releases, or fork a project.</p>
-            <div class="actions">
-              <a class="button" href="https://github.com/leonkaushikdeka" target="_blank" rel="noreferrer">Open GitHub</a>
-            </div>
-          </article>
-          <article class="contact-box">
-            <h3>Email</h3>
-            <p>Reach out for collaboration, demos, project review, or responsible security discussion.</p>
-            <div class="actions">
-              <a class="button" href="mailto:leonkaushikdeka@gmail.com">leonkaushikdeka@gmail.com</a>
-            </div>
-          </article>
+        <div class="contact-card">
+          <div>
+            <h2>Use it, fork it, or ask for a walkthrough.</h2>
+            <p>Open an issue on GitHub for project-specific feedback, or send an email for collaboration, demos, responsible security discussion, and deployment review.</p>
+          </div>
+          <div class="footer-actions">
+            <a class="button primary" href="https://github.com/leonkaushikdeka" target="_blank" rel="noopener noreferrer">Open GitHub</a>
+            <a class="button" href="mailto:leonkaushikdeka@gmail.com">Email</a>
+          </div>
         </div>
       </div>
     </section>
@@ -975,7 +1148,7 @@
 
   <footer class="site-footer">
     <div class="shell footer-row">
-      <span>Built for GitHub Pages. Last curated: June 2026.</span>
+      <span>Built for GitHub Pages. Curated June 2026.</span>
       <span class="mono">leonkaushikdeka.github.io</span>
     </div>
   </footer>
