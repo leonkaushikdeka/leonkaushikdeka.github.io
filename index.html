@@ -153,6 +153,34 @@
         .tech-pill { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin: 0 8px 8px 0; transition: 0.2s; }
         .tech-pill:hover { border-color: var(--primary); color: var(--primary); }
 
+        /* --- CERTIFICATIONS --- */
+        .certifications-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+        .certification-card {
+            padding: 0; overflow: hidden; display: flex; flex-direction: column;
+        }
+        .certification-image-link {
+            display: block; aspect-ratio: 16 / 11; overflow: hidden; background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+        }
+        .certification-image {
+            width: 100%; height: 100%; object-fit: contain; display: block;
+            transition: transform 0.5s var(--ease);
+        }
+        .certification-card:hover .certification-image { transform: scale(1.03); }
+        .certification-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+        .certification-body h3 { font-size: 1.15rem; line-height: 1.35; margin-bottom: 14px; }
+        .certification-meta {
+            color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem;
+            margin-bottom: 20px;
+        }
+        .certification-link {
+            color: var(--primary); text-decoration: none; font-family: var(--font-mono);
+            font-size: 0.82rem; margin-top: auto;
+        }
+        .certification-link:hover { color: var(--text-main); }
+
         /* --- PROJECTS --- */
         .project-item { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 100px; align-items: center; }
         .project-item:nth-child(even) { direction: rtl; }
@@ -225,6 +253,8 @@
         .resume-list { margin-left: 20px; margin-top: 10px; color: var(--text-muted); }
         .resume-list li { margin-bottom: 8px; }
         .resume-text { color: var(--text-muted); margin-bottom: 10px; }
+        .resume-list a { color: var(--primary); text-decoration: none; }
+        .resume-list a:hover { text-decoration: underline; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
@@ -258,6 +288,7 @@
                 <div class="nav-links" id="navLinks">
                     <a onclick="scrollToSection('home')">Home</a>
                     <a onclick="scrollToSection('expertise')">Expertise</a>
+                    <a onclick="scrollToSection('certifications')">Certifications</a>
                     <a onclick="scrollToSection('projects')">Projects</a>
                     <a onclick="scrollToSection('contact')">Contact</a>
                     <a onclick="toggleResume()">Resume</a>
@@ -365,6 +396,161 @@
                         <span class="tech-pill">SOAR</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="container">
+        <div class="reveal">
+            <div style="margin-bottom: 50px;">
+                <span class="project-meta">EC-COUNCIL CODERED // VERIFIED CREDENTIALS</span>
+                <h2 style="font-size: 2.5rem;">Professional <span style="color:var(--primary)">Certifications</span></h2>
+            </div>
+
+            <div class="certifications-grid">
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/4142019b-7ba7-4d08-b572-847b7d38653d" target="_blank" rel="noopener noreferrer" aria-label="Verify Security Automation in AWS with Python certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/4142019b-7ba7-4d08-b572-847b7d38653d.png" alt="Security Automation in AWS with Python certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Security Automation in AWS with Python</h3>
+                        <p class="certification-meta">100% // <time datetime="2026-07-16">16 JUL 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/4142019b-7ba7-4d08-b572-847b7d38653d" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/adc71e88-d7df-41ec-8619-c2ae32e64fc9" target="_blank" rel="noopener noreferrer" aria-label="Verify Machine Learning for Application in Digital Forensics certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/adc71e88-d7df-41ec-8619-c2ae32e64fc9.png" alt="Machine Learning for Application in Digital Forensics certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Machine Learning for Application in Digital Forensics</h3>
+                        <p class="certification-meta">85% // <time datetime="2026-06-18">18 JUN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/adc71e88-d7df-41ec-8619-c2ae32e64fc9" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/ec6bc8f3-2bd2-4431-b028-ddf7fb65f03b" target="_blank" rel="noopener noreferrer" aria-label="Verify Emulate Adversarial Activity with Atomic Red Team certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/ec6bc8f3-2bd2-4431-b028-ddf7fb65f03b.png" alt="Emulate Adversarial Activity with Atomic Red Team certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Emulate Adversarial Activity with Atomic Red Team</h3>
+                        <p class="certification-meta">92% // <time datetime="2026-06-18">18 JUN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/ec6bc8f3-2bd2-4431-b028-ddf7fb65f03b" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/bb9d57e8-d4c9-441f-bc5a-c24caae0a6bd" target="_blank" rel="noopener noreferrer" aria-label="Verify Learn Burp Suite for Advanced Web Penetration Testing certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/bb9d57e8-d4c9-441f-bc5a-c24caae0a6bd.png" alt="Learn Burp Suite for Advanced Web Penetration Testing certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Learn Burp Suite for Advanced Web Penetration Testing</h3>
+                        <p class="certification-meta">100% // <time datetime="2026-06-17">17 JUN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/bb9d57e8-d4c9-441f-bc5a-c24caae0a6bd" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/ea8d8af4-df05-4730-9980-49f29d02d175" target="_blank" rel="noopener noreferrer" aria-label="Verify Effective Risk Management with ISO 31000 certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/ea8d8af4-df05-4730-9980-49f29d02d175.png" alt="Effective Risk Management with ISO 31000 certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Effective Risk Management with ISO 31000</h3>
+                        <p class="certification-meta">84% // <time datetime="2026-06-17">17 JUN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/ea8d8af4-df05-4730-9980-49f29d02d175" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/b6033c68-e715-42f7-8ed6-f9287661ea55" target="_blank" rel="noopener noreferrer" aria-label="Verify AI for Cybersecurity and Bug Bounty Hunting certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/b6033c68-e715-42f7-8ed6-f9287661ea55.png" alt="AI for Cybersecurity and Bug Bounty Hunting certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>AI for Cybersecurity &amp; Bug Bounty Hunting</h3>
+                        <p class="certification-meta">86% // <time datetime="2026-06-15">15 JUN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/b6033c68-e715-42f7-8ed6-f9287661ea55" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/77d50f46-46ec-4ac7-bf01-29e63d51a363" target="_blank" rel="noopener noreferrer" aria-label="Verify Designing and Deploying a Zero-Trust Architecture certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/77d50f46-46ec-4ac7-bf01-29e63d51a363.png" alt="Designing and Deploying a Zero-Trust Architecture certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Designing &amp; Deploying a Zero-Trust Architecture</h3>
+                        <p class="certification-meta">100% // <time datetime="2026-06-15">15 JUN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/77d50f46-46ec-4ac7-bf01-29e63d51a363" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/393d7039-885b-4177-b779-a30a5e9c8e52" target="_blank" rel="noopener noreferrer" aria-label="Verify SOC for Blue Teaming certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/393d7039-885b-4177-b779-a30a5e9c8e52.png" alt="SOC for Blue Teaming certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>SOC for Blue Teaming</h3>
+                        <p class="certification-meta">86% // <time datetime="2026-06-15">15 JUN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/393d7039-885b-4177-b779-a30a5e9c8e52" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/efd250d4-1305-42df-90ed-6a44b670f7c4" target="_blank" rel="noopener noreferrer" aria-label="Verify NIST SP 800-171 Standard for CUI Protection certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/efd250d4-1305-42df-90ed-6a44b670f7c4.png" alt="NIST SP 800-171 Standard for CUI Protection certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>The Ultimate Guide to NIST SP 800-171 Standard for CUI Protection</h3>
+                        <p class="certification-meta">96% // <time datetime="2026-01-14">14 JAN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/efd250d4-1305-42df-90ed-6a44b670f7c4" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/c2b76651-52fd-4ce6-8cc3-a4cb30579384" target="_blank" rel="noopener noreferrer" aria-label="Verify Building and Configuring Your Cybersecurity Attack Lab certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/c2b76651-52fd-4ce6-8cc3-a4cb30579384.png" alt="Building and Configuring Your Cybersecurity Attack Lab certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Building and Configuring Your Cybersecurity Attack Lab</h3>
+                        <p class="certification-meta">93% // <time datetime="2026-01-14">14 JAN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/c2b76651-52fd-4ce6-8cc3-a4cb30579384" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/5b05c50a-8374-4b0d-8fb0-51d2881b83e8" target="_blank" rel="noopener noreferrer" aria-label="Verify Generative AI for Cybersecurity certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/5b05c50a-8374-4b0d-8fb0-51d2881b83e8.png" alt="Generative AI for Cybersecurity certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Generative AI for Cybersecurity</h3>
+                        <p class="certification-meta">100% // <time datetime="2026-01-10">10 JAN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/5b05c50a-8374-4b0d-8fb0-51d2881b83e8" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/54e3ef7c-c72b-4c80-8c72-18601885858b" target="_blank" rel="noopener noreferrer" aria-label="Verify Data Science for Cybersecurity certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/54e3ef7c-c72b-4c80-8c72-18601885858b.png" alt="Data Science for Cybersecurity certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Data Science for Cybersecurity</h3>
+                        <p class="certification-meta">100% // <time datetime="2026-01-10">10 JAN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/54e3ef7c-c72b-4c80-8c72-18601885858b" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card certification-card">
+                    <a class="certification-image-link" href="https://learn.eccouncil.org/certificate/8f832f2b-5baf-4c5a-a6cf-db3726c56272" target="_blank" rel="noopener noreferrer" aria-label="Verify Mastering OSINT and Dark Web Intelligence certificate">
+                        <img class="certification-image" src="https://eccommonstorage.blob.core.windows.net/codered/certificates/8f832f2b-5baf-4c5a-a6cf-db3726c56272.png" alt="Mastering OSINT and Dark Web Intelligence certificate" loading="lazy">
+                    </a>
+                    <div class="certification-body">
+                        <h3>Mastering OSINT and Dark Web Intelligence</h3>
+                        <p class="certification-meta">100% // <time datetime="2026-01-05">5 JAN 2026</time></p>
+                        <a class="certification-link" href="https://learn.eccouncil.org/certificate/8f832f2b-5baf-4c5a-a6cf-db3726c56272" target="_blank" rel="noopener noreferrer">Verify credential &rarr;</a>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -515,6 +701,25 @@
                     <li><strong>Zero Trust & Security Architecture:</strong> Enterprise security design and access control principles</li>
                     <li><strong>OSINT & Dark Web Intelligence:</strong> Deep/Dark web analysis and threat intelligence gathering</li>
                     <li><strong>Risk Management & Compliance:</strong> ISO 31000 risk frameworks and NIST SP 800-171 CUI protection</li>
+                </ul>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="resume-section-title">Verified Certifications</h3>
+                <ul class="resume-list">
+                    <li><a href="https://learn.eccouncil.org/certificate/4142019b-7ba7-4d08-b572-847b7d38653d" target="_blank" rel="noopener noreferrer"><strong>Security Automation in AWS with Python</strong></a> — 100%, 16 Jul 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/adc71e88-d7df-41ec-8619-c2ae32e64fc9" target="_blank" rel="noopener noreferrer"><strong>Machine Learning for Application in Digital Forensics</strong></a> — 85%, 18 Jun 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/ec6bc8f3-2bd2-4431-b028-ddf7fb65f03b" target="_blank" rel="noopener noreferrer"><strong>Emulate Adversarial Activity with Atomic Red Team</strong></a> — 92%, 18 Jun 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/bb9d57e8-d4c9-441f-bc5a-c24caae0a6bd" target="_blank" rel="noopener noreferrer"><strong>Learn Burp Suite for Advanced Web Penetration Testing</strong></a> — 100%, 17 Jun 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/ea8d8af4-df05-4730-9980-49f29d02d175" target="_blank" rel="noopener noreferrer"><strong>Effective Risk Management with ISO 31000</strong></a> — 84%, 17 Jun 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/b6033c68-e715-42f7-8ed6-f9287661ea55" target="_blank" rel="noopener noreferrer"><strong>AI for Cybersecurity &amp; Bug Bounty Hunting</strong></a> — 86%, 15 Jun 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/77d50f46-46ec-4ac7-bf01-29e63d51a363" target="_blank" rel="noopener noreferrer"><strong>Designing &amp; Deploying a Zero-Trust Architecture</strong></a> — 100%, 15 Jun 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/393d7039-885b-4177-b779-a30a5e9c8e52" target="_blank" rel="noopener noreferrer"><strong>SOC for Blue Teaming</strong></a> — 86%, 15 Jun 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/efd250d4-1305-42df-90ed-6a44b670f7c4" target="_blank" rel="noopener noreferrer"><strong>The Ultimate Guide to NIST SP 800-171 Standard for CUI Protection</strong></a> — 96%, 14 Jan 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/c2b76651-52fd-4ce6-8cc3-a4cb30579384" target="_blank" rel="noopener noreferrer"><strong>Building and Configuring Your Cybersecurity Attack Lab</strong></a> — 93%, 14 Jan 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/5b05c50a-8374-4b0d-8fb0-51d2881b83e8" target="_blank" rel="noopener noreferrer"><strong>Generative AI for Cybersecurity</strong></a> — 100%, 10 Jan 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/54e3ef7c-c72b-4c80-8c72-18601885858b" target="_blank" rel="noopener noreferrer"><strong>Data Science for Cybersecurity</strong></a> — 100%, 10 Jan 2026</li>
+                    <li><a href="https://learn.eccouncil.org/certificate/8f832f2b-5baf-4c5a-a6cf-db3726c56272" target="_blank" rel="noopener noreferrer"><strong>Mastering OSINT and Dark Web Intelligence</strong></a> — 100%, 5 Jan 2026</li>
                 </ul>
             </div>
 
