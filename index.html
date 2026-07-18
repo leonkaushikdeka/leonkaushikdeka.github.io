@@ -153,6 +153,31 @@
         .tech-pill { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin: 0 8px 8px 0; transition: 0.2s; }
         .tech-pill:hover { border-color: var(--primary); color: var(--primary); }
 
+        /* --- SERVICES --- */
+        .services-intro {
+            display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 70px;
+            align-items: end; margin-bottom: 46px;
+        }
+        .services-intro p { color: var(--text-muted); font-size: 1.05rem; max-width: 650px; }
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .service-card { position: relative; min-height: 280px; display: flex; flex-direction: column; }
+        .service-number { color: var(--primary); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 1px; }
+        .service-card h3 { font-size: 1.45rem; margin: 26px 0 12px; }
+        .service-card p { color: var(--text-muted); font-size: 0.93rem; margin-bottom: 24px; }
+        .service-list { list-style: none; margin-top: auto; display: grid; gap: 9px; }
+        .service-list li { color: #cbd5e1; font-size: 0.85rem; padding-left: 17px; position: relative; }
+        .service-list li::before { content: '+'; color: var(--accent); position: absolute; left: 0; }
+        .rescue-service { border-color: rgba(239, 68, 68, 0.35); background: linear-gradient(145deg, rgba(127, 29, 29, 0.18), var(--bg-card)); }
+        .rescue-service .service-number { color: #f87171; }
+        .service-band {
+            margin-top: 20px; border: 1px solid var(--border); border-radius: 12px;
+            background: rgba(255,255,255,0.02); padding: 26px 30px;
+            display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px;
+        }
+        .service-band h3 { font-size: 1.35rem; margin-bottom: 7px; }
+        .service-band p { color: var(--text-muted); font-size: 0.9rem; }
+        .service-disclaimer { margin-top: 18px; color: #64748b; font-size: 0.78rem; font-family: var(--font-mono); }
+
         /* --- CERTIFICATIONS --- */
         .certifications-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
@@ -262,6 +287,7 @@
             .project-item:nth-child(even) { direction: ltr; }
             .contact-layout { grid-template-columns: 1fr; }
             .stats-strip { flex-wrap: wrap; gap: 30px; }
+            .services-intro { grid-template-columns: 1fr; gap: 20px; }
         }
 
         @media (max-width: 768px) {
@@ -270,6 +296,8 @@
             .menu-toggle { display: block; }
             .hero h1 { font-size: 2.8rem; }
             .resume-content { padding: 20px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-band { grid-template-columns: 1fr; }
             
         }
 
@@ -288,6 +316,7 @@
                 <div class="nav-links" id="navLinks">
                     <a onclick="scrollToSection('home')">Home</a>
                     <a onclick="scrollToSection('expertise')">Expertise</a>
+                    <a onclick="scrollToSection('services')">Services</a>
                     <a onclick="scrollToSection('certifications')">Certifications</a>
                     <a onclick="scrollToSection('projects')">Projects</a>
                     <a onclick="scrollToSection('contact')">Contact</a>
@@ -310,26 +339,26 @@
             </div>
             
             <p style="max-width: 600px; color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">
-                Leon Kaushik Deka. Specializing in advanced penetration testing, cloud defense architecture, and zero-trust implementation for enterprise clients.
+                Leon Kaushik Deka. Building practical security tools and delivering website assurance, cloud hardening, GRC readiness, and incident recovery support.
             </p>
 
             <div class="cta-group">
-                <div class="btn btn-primary" onclick="scrollToSection('projects')">View Operations</div>
+                <div class="btn btn-primary" onclick="scrollToSection('services')">Explore Services</div>
                 <div class="btn btn-outline" onclick="toggleResume()">Open Resume</div>
             </div>
 
             <div class="stats-strip">
                 <div class="stat">
-                    <h4>07+</h4>
-                    <p>Years Exp</p>
+                    <h4>20+</h4>
+                    <p>Mapped Controls</p>
                 </div>
                 <div class="stat">
-                    <h4>100%</h4>
-                    <p>Success Rate</p>
+                    <h4>04</h4>
+                    <p>Framework Families</p>
                 </div>
                 <div class="stat">
-                    <h4>24/7</h4>
-                    <p>Monitoring</p>
+                    <h4>ZERO</h4>
+                    <p>Intrusive Default Checks</p>
                 </div>
             </div>
         </div>
@@ -397,6 +426,98 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="container">
+        <div class="reveal">
+            <div class="services-intro">
+                <div>
+                    <span class="project-meta">ASSESS // FIX // OPERATE // RECOVER</span>
+                    <h2 style="font-size: 2.5rem;">Security services that end in a <span style="color:var(--primary)">safer system.</span></h2>
+                </div>
+                <p>
+                    Clear findings are only the beginning. I help growing teams understand the risk, implement the control, collect the evidence, and keep the program working after the audit.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <article class="card service-card">
+                    <span class="service-number">01 // ASSURANCE</span>
+                    <h3>Website &amp; Cloud Security Audit</h3>
+                    <p>A permission-based review of public exposure, website configuration, cloud architecture, identity, logging, backups, and recovery readiness.</p>
+                    <ul class="service-list">
+                        <li>Non-intrusive website and DNS baseline</li>
+                        <li>Cloudflare, WAF, origin, and rate-limit review</li>
+                        <li>Prioritized findings with implementation guidance</li>
+                    </ul>
+                </article>
+
+                <article class="card service-card">
+                    <span class="service-number">02 // READINESS</span>
+                    <h3>ISO, SOC 2 &amp; GRC Readiness</h3>
+                    <p>Scope the right framework, map existing controls, identify evidence gaps, create accountable treatment plans, and prepare a reviewable audit room.</p>
+                    <ul class="service-list">
+                        <li>ISO 27001 and SOC 2 readiness support</li>
+                        <li>Risk register, policies, controls, and evidence</li>
+                        <li>NIST CSF and PCI-aligned implementation mapping</li>
+                    </ul>
+                </article>
+
+                <article class="card service-card">
+                    <span class="service-number">03 // MANAGED GRC</span>
+                    <h3>Ongoing GRC Operations</h3>
+                    <p>A practical operating rhythm for teams that need governance and compliance outcomes without building a full internal GRC function immediately.</p>
+                    <ul class="service-list">
+                        <li>Monthly risk, policy, control, and evidence reviews</li>
+                        <li>Vendor security and questionnaire support</li>
+                        <li>Leadership reporting and audit coordination</li>
+                    </ul>
+                </article>
+
+                <article class="card service-card">
+                    <span class="service-number">04 // HARDENING</span>
+                    <h3>Cloudflare &amp; Security Hardening</h3>
+                    <p>Turn audit findings into safer edge, identity, cloud, monitoring, backup, and deployment configurations with validation after the change.</p>
+                    <ul class="service-list">
+                        <li>Managed WAF, bot, DNS, and origin protection</li>
+                        <li>MFA, least privilege, and account recovery</li>
+                        <li>Logging, backup isolation, and recovery tests</li>
+                    </ul>
+                </article>
+
+                <article class="card service-card rescue-service">
+                    <span class="service-number">05 // CYBER RESCUE</span>
+                    <h3>Website &amp; Cloud Recovery</h3>
+                    <p>Rapid triage and recovery coordination for hacked websites, malicious redirects, exposed credentials, account takeover, or unsafe cloud changes.</p>
+                    <ul class="service-list">
+                        <li>Containment guidance and evidence preservation</li>
+                        <li>Clean recovery, credential reset, and monitoring</li>
+                        <li>Root-cause review and post-incident hardening</li>
+                    </ul>
+                </article>
+
+                <article class="card service-card">
+                    <span class="service-number">06 // ENGINEERING</span>
+                    <h3>Security Automation</h3>
+                    <p>Small, inspectable tools that turn recurring checks, evidence, and security operations into repeatable workflows your team can own.</p>
+                    <ul class="service-list">
+                        <li>Python and Node.js security automation</li>
+                        <li>CI/CD controls and machine-readable reports</li>
+                        <li>Local-first GRC and evidence workflows</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="service-band">
+                <div>
+                    <h3>Start with a scoped security baseline.</h3>
+                    <p>Share the business objective, systems in scope, and deadline. I will propose a safe assessment and an outcome-focused delivery plan.</p>
+                </div>
+                <a class="btn btn-primary" href="mailto:leonkaushikdeka@gmail.com?subject=Security%20service%20inquiry">Discuss an engagement</a>
+            </div>
+            <p class="service-disclaimer">Emergency and recovery work is subject to availability, written authorization, safe scope, and required specialist or legal partners. Readiness support does not issue certification or an independent audit opinion.</p>
         </div>
     </section>
 
@@ -570,12 +691,12 @@
                     <svg class="project-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </div>
                 <div class="project-content">
-                    <span class="project-meta">CLOUD SECURITY // PYTHON // SERVERLESS</span>
-                    <h3>Zero-Trust Compliance Scanner</h3>
+                    <span class="project-meta">SECURITY BASELINE // GRC // NODE.JS</span>
+                    <h3>TrustHarbor Toolkit</h3>
                     <p style="color:var(--text-muted); margin:20px 0 30px;">
-                        A fully automated serverless solution that continuously scans enterprise infrastructure for compliance violations against CIS benchmarks. Integrated directly into CI/CD pipelines to prevent misconfigurations from reaching production.
+                        A zero-dependency command-line toolkit for safe website security baselines, ISO/SOC/NIST/PCI control mapping, company assessments, risk registers, evidence hashing, readiness tracking, and HTML/JSON/SARIF reporting.
                     </p>
-                    <div class="btn btn-outline" style="width:fit-content; padding: 10px 24px;">Read Whitepaper</div>
+                    <a class="btn btn-outline" href="https://github.com/leonkaushikdeka/trustharbor-toolkit" target="_blank" rel="noopener noreferrer" style="width:fit-content; padding: 10px 24px;">View on GitHub</a>
                 </div>
             </div>
 
@@ -604,7 +725,7 @@
                     <div>
                         <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Secure <br>Encrypted Line.</h2>
                         <p style="color:var(--text-muted); margin-bottom: 40px;">
-                            Ready to fortify your digital perimeter? Reach out for audits, consulting, or collaboration.
+                            Need a website audit, GRC program, ISO/SOC readiness plan, Cloudflare hardening, or recovery support? Start with a scoped conversation.
                         </p>
                         
                         <div style="margin-bottom: 20px;">
@@ -744,7 +865,7 @@
         });
 
         // --- 2. Typewriter Effect ---
-        const roles = ["Cybersecurity Engineer", "Red Team Specialist", "Cloud Architect", "Ethical Hacker"];
+        const roles = ["Cybersecurity Engineer", "GRC & Security Advisor", "Cloud Defense Builder", "Security Toolmaker"];
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
