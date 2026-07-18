@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leon Kaushik Deka | Security Architect</title>
-    
+    <meta name="description" content="Leon Kaushik Deka — security architect delivering website assurance, cloud hardening, GRC readiness, and incident recovery support.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,8 +63,9 @@
         }
 
         /* --- TYPOGRAPHY --- */
-        h1, h2, h3, h4 { line-height: 1.1; font-weight: 600; }
-        
+        h1, h2, h3, h4 { line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; }
+        .section-title { font-size: clamp(1.9rem, 4.5vw, 2.5rem); }
+
         .mono { font-family: var(--font-mono); }
         .text-gradient {
             background: linear-gradient(to right, var(--text-main), var(--text-muted));
@@ -109,8 +112,9 @@
         .hero h1 { font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 16px; letter-spacing: -0.04em; }
         
         .hero-typewriter {
-            font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--text-muted);
-            margin-bottom: 40px; height: 3.5rem; display: flex; align-items: center;
+            font-size: clamp(1.2rem, 4vw, 2.5rem); color: var(--text-muted);
+            margin-bottom: 40px; min-height: 3.5rem; display: flex; align-items: center;
+            flex-wrap: wrap; line-height: 1.3;
         }
         .cursor {
             display: inline-block; width: 3px; height: 1em; background: var(--primary);
@@ -118,7 +122,7 @@
         }
         @keyframes blink { 50% { opacity: 0; } }
 
-        .cta-group { display: flex; gap: 20px; }
+        .cta-group { display: flex; gap: 20px; flex-wrap: wrap; }
 
         .btn {
             padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 0.95rem;
@@ -225,14 +229,15 @@
         .project-meta { font-family: var(--font-mono); color: var(--primary); font-size: 0.85rem; margin-bottom: 20px; display: block; }
 
         /* --- CONTACT --- */
+        .contact-card { padding: 60px; }
         .contact-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
         input, textarea { width: 100%; background: var(--bg-surface); border: 1px solid var(--border); padding: 16px; color: var(--text-main); border-radius: 8px; font-family: var(--font-heading); font-size: 1rem; transition: 0.3s; margin-bottom: 20px; }
         input:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
 
         /* --- FOOTER --- */
         footer { border-top: 1px solid var(--border); padding: 40px 0; margin-top: 100px; background: #020305; }
-        .footer-grid { display: flex; justify-content: space-between; align-items: center; }
-        .system-status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 20px; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .system-status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 20px; flex-wrap: wrap; }
         .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; }
 
         /* --- RESUME MODAL --- */
@@ -294,11 +299,17 @@
             .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-surface); flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border); }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
-            .hero h1 { font-size: 2.8rem; }
+            section { padding: 80px 0; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero-typewriter { min-height: 2.6rem; margin-bottom: 30px; }
+            .stats-strip { margin-top: 60px; }
+            .stat h4 { font-size: 2rem; }
             .resume-content { padding: 20px; }
             .services-grid { grid-template-columns: 1fr; }
             .service-band { grid-template-columns: 1fr; }
-            
+            .contact-card { padding: 32px 24px; }
+            .contact-layout { gap: 40px; }
+            .project-content h3 { font-size: 1.6rem; }
         }
 
         /* Scroll Animation Class */
@@ -367,7 +378,7 @@
     <!-- EXPERTISE -->
     <section id="expertise" class="container">
         <div class="reveal">
-            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Technical <span style="color:var(--primary)">Capabilities</span></h2>
+            <h2 class="section-title" style="margin-bottom: 40px;">Technical <span style="color:var(--primary)">Capabilities</span></h2>
             <div class="skills-grid">
                 <!-- Skill 1 -->
                 <div class="card">
@@ -435,7 +446,7 @@
             <div class="services-intro">
                 <div>
                     <span class="project-meta">ASSESS // FIX // OPERATE // RECOVER</span>
-                    <h2 style="font-size: 2.5rem;">Security services that end in a <span style="color:var(--primary)">safer system.</span></h2>
+                    <h2 class="section-title">Security services that end in a <span style="color:var(--primary)">safer system.</span></h2>
                 </div>
                 <p>
                     Clear findings are only the beginning. I help growing teams understand the risk, implement the control, collect the evidence, and keep the program working after the audit.
@@ -515,7 +526,7 @@
                     <h3>Start with a scoped security baseline.</h3>
                     <p>Share the business objective, systems in scope, and deadline. I will propose a safe assessment and an outcome-focused delivery plan.</p>
                 </div>
-                <a class="btn btn-primary" href="mailto:leonkaushikdeka@gmail.com?subject=Security%20service%20inquiry">Discuss an engagement</a>
+                <a class="btn btn-primary" href="#contact" onclick="event.preventDefault(); scrollToSection('contact');">Discuss an engagement</a>
             </div>
             <p class="service-disclaimer">Emergency and recovery work is subject to availability, written authorization, safe scope, and required specialist or legal partners. Readiness support does not issue certification or an independent audit opinion.</p>
         </div>
@@ -526,7 +537,7 @@
         <div class="reveal">
             <div style="margin-bottom: 50px;">
                 <span class="project-meta">EC-COUNCIL CODERED // VERIFIED CREDENTIALS</span>
-                <h2 style="font-size: 2.5rem;">Professional <span style="color:var(--primary)">Certifications</span></h2>
+                <h2 class="section-title">Professional <span style="color:var(--primary)">Certifications</span></h2>
             </div>
 
             <div class="certifications-grid">
@@ -679,9 +690,9 @@
     <!-- PROJECTS -->
     <section id="projects" class="container">
         <div class="reveal">
-            <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom:60px;">
-                <h2 style="font-size: 2.5rem;">Selected <span style="color:var(--primary)">Deployments</span></h2>
-                <a href="#" class="mono" style="color:var(--text-muted); font-size:0.9rem; text-decoration:none;">View Archive &rarr;</a>
+            <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom:60px; flex-wrap:wrap; gap:12px;">
+                <h2 class="section-title">Selected <span style="color:var(--primary)">Deployments</span></h2>
+                <a href="https://github.com/leonkaushikdeka?tab=repositories" target="_blank" rel="noopener noreferrer" class="mono" style="color:var(--text-muted); font-size:0.9rem; text-decoration:none;">View Archive &rarr;</a>
             </div>
 
             <!-- Project 1 -->
@@ -711,7 +722,7 @@
                     <p style="color:var(--text-muted); margin:20px 0 30px;">
                         Designed for Red Team operations, this lightweight Command & Control framework utilizes encrypted DNS tunneling to bypass enterprise firewalls and proxies. Includes a modular payload system.
                     </p>
-                    <div class="btn btn-outline" style="width:fit-content; padding: 10px 24px;">View Architecture</div>
+                    <a class="btn btn-outline" href="stealth-c2-screenshot.png" target="_blank" rel="noopener noreferrer" style="width:fit-content; padding: 10px 24px;">View Architecture</a>
                 </div>
             </div>
         </div>
@@ -720,10 +731,10 @@
     <!-- CONTACT -->
     <section id="contact" class="container" style="margin-bottom: 50px;">
         <div class="reveal">
-            <div class="card" style="padding: 60px;">
+            <div class="card contact-card">
                 <div class="contact-layout">
                     <div>
-                        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Secure <br>Encrypted Line.</h2>
+                        <h2 class="section-title" style="margin-bottom: 20px;">Secure <br>Encrypted Line.</h2>
                         <p style="color:var(--text-muted); margin-bottom: 40px;">
                             Need a website audit, GRC program, ISO/SOC readiness plan, Cloudflare hardening, or recovery support? Start with a scoped conversation.
                         </p>
@@ -957,6 +968,7 @@
         function toggleResume() {
             const modal = document.getElementById('resumeModal');
             modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
             const nav = document.getElementById('navLinks');
             if(nav.classList.contains('active')) nav.classList.remove('active');
         }
@@ -964,8 +976,16 @@
         function closeResume(e) {
             if (e.target.classList.contains('resume-overlay') || e.target.closest('.resume-close')) {
                 document.getElementById('resumeModal').classList.remove('active');
+                document.body.style.overflow = '';
             }
         }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('resumeModal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
 
         // ---9. FIXED: Contact Form Logic (Sends Email via Client) ---
         function sendTransmission(e) {
